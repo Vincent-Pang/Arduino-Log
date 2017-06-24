@@ -136,7 +136,12 @@ void Logging::printFormat(const char format, va_list *args) {
     }
     return;
   }
-#endif	  
+
+    if( format == 'D' || format == 'F') {
+        _logOutput->print(va_arg( *args, double ));
+        return;
+    }
+#endif
 }
  
 Logging Log = Logging();
